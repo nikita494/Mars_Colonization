@@ -177,5 +177,41 @@ def astronauts_selection():
         return "OK"
 
 
+@app.route('/choice/<planet_name>')
+def planet_choice(planet_name):
+    planet_text = {'Марс': ['Эта планета близка к земле;', 'На ней много необходимых ресурсов;',
+                            'На ней есть вода и атмосфера;', 'На ней есть небольшое магнитное поле;',
+                            'Наконец она просто красива!'],
+                   'Меркурий': ['Эта планета ближайшая к Солнцу;',
+                                'Планета обращается вокруг Солнца за 88 земных суток;',
+                                'Меркурий самая маленькая планета;', 'У планеты очень разряженная атмосфера;',
+                                'Ускорение свободного падения на меркурии в два раза меньше чем на Земле!'],
+                   'Венера': ['Принадлежит к семейству планет земной группы;',
+                              'Атмосфера Венеры на 96% сотоит из углекислого газа;',
+                              'Это самая горячая планета;', 'Венера не имеет естественных спутников;',
+                              'Также Венера была главной целью для ранних межпланетных исследований!']}
+
+    return f''' <link rel="stylesheet" 
+                    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+                    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+                    crossorigin="anonymous">
+                <h1>Мое предложение: {planet_name}</h1>
+                <div class="alert alert-primary" role="alert">
+                 {planet_text[planet_name][0]}
+                </div>
+                <div class="alert alert-secondary" role="alert">
+                 {planet_text[planet_name][1]}
+                </div>
+                <div class="alert alert-success" role="alert">
+                 {planet_text[planet_name][2]}
+                </div>
+                <div class="alert alert-danger" role="alert">
+                 {planet_text[planet_name][3]}
+                </div>
+                <div class="alert alert-warning" role="alert">
+                 {planet_text[planet_name][4]}
+                </div>'''
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
